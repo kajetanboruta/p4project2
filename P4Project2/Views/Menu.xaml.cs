@@ -13,24 +13,41 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace P4Project2.Views.Pages
+namespace P4Project2.Views
 {
     /// <summary>
     /// Logika interakcji dla klasy Menu.xaml
     /// </summary>
     public partial class Menu : Page
     {
-        ClientView clientView;
+        public Menu()
+        {
+            InitializeComponent();
+
+        }
+
+        readonly ClientView clientView;
+
         public Menu(ClientView clientView)
         {
             InitializeComponent();
             this.clientView = clientView;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Switch_To_CharacterCreationView(object sender, RoutedEventArgs e)
         {
             if (clientView.MainFrame != null)
-                clientView.MainFrame.Navigate(new Menu(clientView));
+                clientView.MainFrame.Navigate(new CharacterCreation_View());
+        }
+
+        private void CloseClient(object sender, RoutedEventArgs e)
+        {
+            clientView.Close();
+        }
+
+        private void Switch_To_CharacterSelectionView(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -24,15 +24,16 @@ namespace P4Project2.Views
         public ClientView()
         {
             InitializeComponent();
-            //Context context = new Context();
-            //context.Database.EnsureCreated();
-            //context.SaveChangesAsync();
+
+            MainFrame.Navigate(new Menu(this));
+
+            Context context = new Context();
+            context.Database.EnsureCreated();
+            context.SaveChangesAsync();
 
             //Gladiator gladiator = new Gladiator();
             //gladiator =
             //context.Gladiators.Where(g => g.Name == "Kajetan").FirstOrDefault();
-
-
 
             //MessageBox.Show($"Name: {gladiator.Name}, HP: {gladiator.Health}, Mana: {gladiator.Mana}, Coins: {gladiator.Purse}");
         }
