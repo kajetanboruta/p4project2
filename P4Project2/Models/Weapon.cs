@@ -12,6 +12,7 @@ namespace P4Project2.Models
         public string Name { get; set; }
         public int Experience_Required { get; set; }
         public int Damage_Modifier_Avg { get; set; }
+        public int Hit_Chance { get; set; }
         public PrimaryClass PrimaryClass_Required { get; set; }
 
         public Weapon()

@@ -12,7 +12,7 @@
         <m:Gladiator/>
     </Page.DataContext>
     <Grid>
-        <DataGrid x:Name="DG_Gladiators">
+        <DataGrid x:Name="DG_Gladiators" ItemsSource="{Binding _Gladiators}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name"/>
                 <DataGridTextColumn Header="Experience/Level"/>

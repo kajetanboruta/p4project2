@@ -47,7 +47,8 @@ namespace P4Project2.Views
 
         private void Switch_To_CharacterSelectionView(object sender, RoutedEventArgs e)
         {
-
+            if (clientView.MainFrame != null)
+                clientView.MainFrame.Navigate(new CharacterSelection_View());
         }
     }
 }

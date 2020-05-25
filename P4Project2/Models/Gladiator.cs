@@ -1,6 +1,7 @@
 ﻿using P4Project2.DBContext;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -26,6 +27,7 @@ namespace P4Project2.Models
         public AscendancyClass Ascendancy { get; set; }
         [DefaultValue(null)]
         public Weapon CurrentWeapon { get; set; }
+        public Level CurrentLevel { get; set; }
         [DefaultValue(0)]
         public int Experience { get; set; }
         [DefaultValue("Prisoner")]
@@ -45,6 +47,10 @@ namespace P4Project2.Models
         {
 
         }
+
+        public ICollection<Gladiator> _Gladiators { get; set; } = new ObservableCollection<Gladiator>();
+        Random rnd = new Random();
+
 
         public int ExperienceGained(Gladiator player, Gladiator enemy, int exp)
         {
@@ -77,6 +83,24 @@ namespace P4Project2.Models
 
                 return;
             }
+        }
+
+        public double GetDamage(Gladiator _gladiator)
+        {
+            return _gladiator.CurrentWeapon.Damage_Modifier_Avg;
+        }
+
+        public bool IsAttackHit(Weapon _weapon)
+        {
+            rnd.Next(0, 100);
+            return false;
+        }
+
+        public bool BlockAttack(Gladiator _gladiator, Gladiator _enemy)
+        {
+            //_enemy.CurrentWeapon.Hit_Chance
+
+            return false;
         }
     }
 }
