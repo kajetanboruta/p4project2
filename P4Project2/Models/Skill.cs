@@ -14,9 +14,9 @@ namespace P4Project2.Models
         public Skill SkillID_RequiredToPick { get; set; }
         public AscendancyClass AscendancyClass_Required { get; set; }
         public PrimaryClass PrimaryClass_Required { get; set; }
-        public bool IsAttack { get; set; } // attack or block based on skill name and description
         public double Damage { get; set; }
-        public int Chance { get; set; }
+        public double Heal { get; set; }
+        public int Accuracy { get; set; }
 
         public Skill()
         {

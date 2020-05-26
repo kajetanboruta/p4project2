@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using P4Project2.DBContext;
+using P4Project2.Models;
 
 namespace P4Project2.Views
 {
@@ -23,6 +25,9 @@ namespace P4Project2.Views
         public CharacterSelection_View()
         {
             InitializeComponent();
+            Gladiator gladiator = new Gladiator();
+            Context context = new Context();
+            gladiator._Gladiators = context.Gladiators.ToList();
         }
     }
 }

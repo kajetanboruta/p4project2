@@ -28,6 +28,7 @@ namespace P4Project2.Views
             MainFrame.Navigate(new Menu(this));
 
             Context context = new Context();
+            context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
             context.SaveChangesAsync();
 

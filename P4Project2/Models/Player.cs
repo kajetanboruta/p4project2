@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace P4Project2.Models
 {
-    public class Player
+    public static class Player
     {
-        public int ID { get; set; }
-        public Gladiator GladiatorID { get; set; }
+        public static int ID { get; set; }
+        public static Gladiator GladiatorID { get; set; }
     }
 }
