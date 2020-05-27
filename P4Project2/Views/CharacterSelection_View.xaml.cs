@@ -1,4 +1,5 @@
-﻿using P4Project2.DBContext;
+﻿using Microsoft.EntityFrameworkCore;
+using P4Project2.DBContext;
 using P4Project2.Models;
 using System;
 using System.Collections.Generic;

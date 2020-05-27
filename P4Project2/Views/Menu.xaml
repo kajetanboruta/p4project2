@@ -23,7 +23,14 @@
         </Border>
         
         <Grid Grid.Column="2">
-            <TextBlock Margin="0 30 0 0" Foreground="White" FontSize="75" FontFamily="Perpetua Tiling MT" FontWeight="ExtraBold">SACRIFICUM</TextBlock>
+            <StackPanel>
+                <Border BorderThickness="1"  Margin="10 30 10 0" BorderBrush="White"/>
+                <TextBlock Margin="0 0 0 0" Foreground="White" FontSize="75" FontFamily="Perpetua Tiling MT" FontWeight="ExtraBold" Text="SACRIFICUM"/>
+                <Border BorderThickness="1" Margin="10 0" BorderBrush="White"/>
+                <WrapPanel HorizontalAlignment="Center">
+                    <TextBlock Margin="0 20 0 0" Foreground="White" FontSize="25" FontFamily="Perpetua Tiling MT" FontWeight="ExtraBold">Ancient Rome, 73 BCE</TextBlock>
+                </WrapPanel>
+            </StackPanel>
             <StackPanel VerticalAlignment="Bottom">
                 <Button HorizontalContentAlignment="Right" Click="Switch_To_CharacterCreationView" Style="{StaticResource menu_Button}" Height="75" Content="CREATE NEW CHARACTER"/>
                 <Button HorizontalContentAlignment="Right" Click="Switch_To_CharacterSelectionView" Style="{StaticResource menu_Button}" Height="75" Content="CHOOSE CHARACTER"/>
