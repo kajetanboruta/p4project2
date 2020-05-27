@@ -163,7 +163,6 @@
     <Compile Include="Models\Level.cs" />
     <Compile Include="Models\Weapon.cs" />
     <Compile Include="Models\PrimaryClass.cs" />
-    <Compile Include="Models\Skill.cs" />
     <Compile Include="Views\CharacterCreation_View.xaml.cs">
       <DependentUpon>CharacterCreation_View.xaml</DependentUpon>
     </Compile>
