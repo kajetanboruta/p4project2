@@ -8,7 +8,6 @@ namespace P4Project2.DBContext
         public DbSet<Gladiator> Gladiators { get; set; }
         public DbSet<AscendancyClass> AscendancyClasses { get; set; }
         public DbSet<PrimaryClass> PrimaryClasses { get; set; }
-        public DbSet<Skill> Skills { get; set; }
         public DbSet<Weapon> Weapons { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -19,8 +18,6 @@ namespace P4Project2.DBContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Gladiator>()
-                .HasMany(c => c.Skills);
         }
     }
 }

@@ -8,10 +8,10 @@
       Title="Menu">
 
     <Grid>
-        <StackPanel>
-            <Button Click="Switch_To_CharacterCreationView" Height="50" Width="500" Content="Create character"/>
-            <Button Click="Switch_To_CharacterSelectionView" Height="50" Width="500" Content="Choose character"/>
-            <Button Click="CloseClient" Height="50" Width="500" Content="Zakończ"/>
+        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Button Click="Switch_To_CharacterCreationView" Style="{StaticResource menu_Button}" Content="CREATE CHARACTER"/>
+            <Button Click="Switch_To_CharacterSelectionView" Style="{StaticResource menu_Button}" Content="CHOOSE CHARACTER"/>
+            <Button Click="CloseClient" Style="{StaticResource menu_Button}" Content="END"/>
         </StackPanel>
     </Grid>
 </Page>

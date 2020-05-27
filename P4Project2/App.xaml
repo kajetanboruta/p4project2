@@ -3,7 +3,39 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:P4Project2"
              StartupUri="Views/ClientView.xaml">
+
     <Application.Resources>
-         
+        <Style x:Key="menu_Button" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Margin" Value="0 25 25 25"/>
+            <Setter Property="FontFamily" Value="Perpetua Tiling MT"/>
+            <Setter Property="FontSize" Value="62"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Button.MouseEnter">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                        Storyboard.TargetProperty="(Button.Opacity)"
+                                        From="1.0" To="0.5" Duration="0:0:0:1" AutoReverse="True"
+                                        RepeatBehavior="Forever"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Button.MouseLeave">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                        Storyboard.TargetProperty="(Button.Opacity)"
+                                        To="1" Duration="0:0:0:1"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>
     </Application.Resources>
 </Application>

@@ -26,6 +26,11 @@ namespace P4Project2.Views
         public CharacterCreation_View()
         {
             InitializeComponent();
+
+            gender_Field.Items.Add("Female");
+            gender_Field.Items.Add("Male");
+
+
         }
 
         readonly Context Context = new Context();
@@ -40,9 +45,9 @@ namespace P4Project2.Views
             Gladiator _gladiator = new Gladiator
             {
                 Name = name_Field.Text,
-                PrimaryClass = await Context.PrimaryClasses.
-                                                        Where(c => c.Name == class_Field.Text).
-                                                        FirstOrDefaultAsync(),
+                PrimaryClass = await Context.PrimaryClasses
+                                            .Where(c => c.Name == class_Field.Text)
+                                            .FirstOrDefaultAsync(),
                 Gender = gender_Field.Text
             };
 

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,15 +21,18 @@ namespace P4Project2.Models
         public string Name { get; set; }
         [Required]
         public string Gender { get; set; }
-        [DefaultValue(null)]
-        public ICollection<Skill> Skills { get; set; }
-        [Required]
+        [ForeignKey("PrimaryClassID_FK")]
         public PrimaryClass PrimaryClass { get; set; }
-        [DefaultValue(null)]
+        public int PrimaryClassID_FK { get; set; }
+        [ForeignKey("AscendancyID_FK")]
         public AscendancyClass Ascendancy { get; set; }
-        [DefaultValue(null)]
+        public int AscendancyID_FK { get; set; }
+        [ForeignKey("WeaponID")]
         public Weapon CurrentWeapon { get; set; }
+        public int? WeaponID { get; set; }
+        [ForeignKey("LevelID_FK")]
         public Level CurrentLevel { get; set; }
+        public int LevelID_FK { get; set; }
         [DefaultValue(0)]
         public int Experience { get; set; }
         [DefaultValue("Prisoner")]
@@ -43,13 +47,14 @@ namespace P4Project2.Models
         public int Health { get; set; }
         [DefaultValue(50)]
         public int Mana { get; set; }
+        [NotMapped]
+        public ICollection<Gladiator> _Gladiators { get; set; } = new ObservableCollection<Gladiator>();
 
         public Gladiator()
         {
 
         }
 
-        public ICollection<Gladiator> _Gladiators { get; set; } = new ObservableCollection<Gladiator>();
         public static readonly Random rnd = new Random();
 
 

@@ -12,14 +12,16 @@
         <m:Gladiator/>
     </Page.DataContext>
     <Grid>
-        <DataGrid x:Name="DG_Gladiators" ItemsSource="{Binding _Gladiators}">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Name"/>
-                <DataGridTextColumn Header="Experience/Level"/>
-                <DataGridTextColumn Header=""/>
-                <DataGridTextColumn Header=""/>
-                <DataGridTextColumn Header=""/>
-            </DataGrid.Columns>
-        </DataGrid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid x:Name="DG_Gladiators">
+                <DataGrid.Columns>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button Click="Button_Click" Height="25" Width="100"/>
+        </Grid>
     </Grid>
 </Page>
