@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:P4Project2.Views"
         Background="#303030"
         mc:Ignorable="d"
-        Title="ClientView"
+        Title="Sacrificum"
         WindowState="Maximized"
         WindowStartupLocation="CenterScreen">
     

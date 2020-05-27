@@ -8,18 +8,20 @@
       Title="Menu">
 
     <Grid HorizontalAlignment="Right">
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="15"/>
             <ColumnDefinition Width="440"/>
         </Grid.ColumnDefinitions>
+        
         <Image Source="/Images/splashart.png" Stretch="Fill"/>
+        
         <Border Grid.Column="1" BorderThickness="1 0 0 0" BorderBrush="White" HorizontalAlignment="Right">
             <Border BorderThickness="3 0 0 0" BorderBrush="Gray" Margin="5 0 0 0">
                 <Border BorderThickness="1 0 0 0" BorderBrush="White" Margin="5 0 0 0"/>
             </Border>
         </Border>
+        
         <Grid Grid.Column="2">
             <TextBlock Margin="0 30 0 0" Foreground="White" FontSize="75" FontFamily="Perpetua Tiling MT" FontWeight="ExtraBold">SACRIFICUM</TextBlock>
             <StackPanel VerticalAlignment="Bottom">
