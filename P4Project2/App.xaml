@@ -10,7 +10,7 @@
             <Setter Property="Margin" Value="0 0 25 0"/>
             <Setter Property="FontFamily" Value="Perpetua Tiling MT"/>
             <Setter Property="FontSize" Value="30"/>
-            <Setter Property="Foreground" Value="Gray"/>
+            <Setter Property="Foreground" Value="LightGray"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Template">
                 <Setter.Value>

@@ -23,14 +23,20 @@ namespace P4Project2.Views
     /// </summary>
     public partial class CharacterSelection_View : Page
     {
+
         public CharacterSelection_View()
         {
             InitializeComponent();
+            Func();
+        }
 
-            Gladiator _g = new Gladiator();
-            Context _ctx = new Context();
-            
-            _g._Gladiators = _ctx.Gladiators.ToList();
+        public Gladiator _g = new Gladiator();
+        public Context _ctx = new Context();
+
+        public async void Func()
+        {
+            var a = await _ctx.Gladiators.ToListAsync();
+            _g._Gladiators = a;
             DG_Gladiators.ItemsSource = _g._Gladiators;
         }
 

@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:P4Project2.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+      FontFamily="Perpetua Tiling MT"
       Title="CharacterCreation_View">
 
     <Grid>

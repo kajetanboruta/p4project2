@@ -48,7 +48,7 @@ namespace P4Project2.Models
         [DefaultValue(50)]
         public int Mana { get; set; }
         [NotMapped]
-        public ICollection<Gladiator> _Gladiators { get; set; } = new ObservableCollection<Gladiator>();
+        public ICollection<Gladiator> _Gladiators { get; set; }
 
         public Gladiator()
         {
@@ -56,7 +56,6 @@ namespace P4Project2.Models
         }
 
         public static readonly Random rnd = new Random();
-
 
         /// <summary>
         /// returns experience gained if fight won, else null.

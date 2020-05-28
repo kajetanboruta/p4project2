@@ -28,9 +28,8 @@ namespace P4Project2.Views
             MainFrame.Navigate(new Menu(this));
 
             Context context = new Context();
-            context.Database.EnsureDeletedAsync();
-            context.Database.EnsureCreatedAsync();
-            context.SaveChangesAsync();
+            context.Database.EnsureCreated();
+            context.SaveChanges();
 
             //Gladiator gladiator = new Gladiator();
             //gladiator =
