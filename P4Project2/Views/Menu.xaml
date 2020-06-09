@@ -10,15 +10,15 @@
     <Grid HorizontalAlignment="Right">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="17"/>
             <ColumnDefinition Width="440"/>
         </Grid.ColumnDefinitions>
         
         <Image Source="/Images/splashart.png" Stretch="Fill"/>
         
-        <Border Grid.Column="1" BorderThickness="1 0 0 0" BorderBrush="White" HorizontalAlignment="Right">
+        <Border Grid.Column="1" BorderThickness="2 0 0 0" BorderBrush="White" HorizontalAlignment="Right">
             <Border BorderThickness="3 0 0 0" BorderBrush="Gray" Margin="5 0 0 0">
-                <Border BorderThickness="1 0 0 0" BorderBrush="White" Margin="5 0 0 0"/>
+                <Border BorderThickness="2 0 0 0" BorderBrush="White" Margin="5 0 0 0"/>
             </Border>
         </Border>
         
@@ -37,5 +37,6 @@
                 <Button HorizontalContentAlignment="Right" Click="CloseClient" Style="{StaticResource menu_Button}" Height="75" Content="EXIT"/>
             </StackPanel>
         </Grid>
+        
     </Grid>
 </Page>

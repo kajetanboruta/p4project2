@@ -14,5 +14,6 @@ namespace P4Project2.Models
         public int Health{ get; set; }
         public int Mana { get; set; }
         public int ExperienceReq { get; set; }
+        public ICollection<Gladiator> Gladiators { get; set; }
     }
 }

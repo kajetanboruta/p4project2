@@ -8,8 +8,8 @@
         mc:Ignorable="d"
         Title="Sacrificum"
         WindowState="Maximized"
+        FontFamily="Perpetua Tiling MT"
         WindowStartupLocation="CenterScreen">
-    
     <Grid>
         <Frame x:Name="MainFrame" Source="Menu.xaml" NavigationUIVisibility="Hidden"/>
     </Grid>

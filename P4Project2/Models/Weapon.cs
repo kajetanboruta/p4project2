@@ -19,6 +19,7 @@ namespace P4Project2.Models
         [ForeignKey("PrimaryClassID_FK")]
         public PrimaryClass PrimaryClass { get; set; }
         public int? PrimaryClassID_FK { get; set; }
+        public ICollection<Gladiator> Gladiators { get; set; }
 
         public Weapon()
         {
