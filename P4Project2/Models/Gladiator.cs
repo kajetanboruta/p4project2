@@ -22,11 +22,8 @@ namespace P4Project2.Models
         [Required]
         public string Gender { get; set; }
         [ForeignKey("PrimaryClassID_FK")]
-        public PrimaryClass PrimaryClass { get; set; }
+        public virtual PrimaryClass PrimaryClass { get; set; }
         public int PrimaryClassID_FK { get; set; }
-        [ForeignKey("AscendancyID_FK")]
-        public AscendancyClass Ascendancy { get; set; }
-        public int AscendancyID_FK { get; set; }
         [ForeignKey("WeaponID")]
         public Weapon CurrentWeapon { get; set; }
         public int? WeaponID { get; set; }
@@ -56,7 +53,6 @@ namespace P4Project2.Models
         }
 
         public static readonly Random rnd = new Random();
-
 
         /// <summary>
         /// returns experience gained if fight won, else null.
@@ -97,33 +93,33 @@ namespace P4Project2.Models
         /// </summary>
         /// <param name="player"></param>
         /// <returns></returns>
-        public bool CanAscend(Gladiator player)
-        {
-            if (player.Ascendancy == null && player.Experience >= 2500)
-                return true;
+        //public bool CanAscend(Gladiator player)
+        //{
+        //    if (player.Ascendancy == null && player.Experience >= 2500)
+        //        return true;
 
-            return false;
-        }
+        //    return false;
+        //}
 
         /// <summary>
         /// let user pick ascension ( subClass )
         /// </summary>
         /// <param name="player"></param>
-        public void PickingAscension(Gladiator player)
-        {
-            if (CanAscend(player))
-                MessageBox.Show($"W trakcie realizacji");
-            else
-            {
-                if (player.Experience < 2500)
-                    MessageBox.Show($"Missing experience: { 2500 - player.Experience }");
+        //public void PickingAscension(Gladiator player)
+        //{
+        //    if (CanAscend(player))
+        //        MessageBox.Show($"W trakcie realizacji");
+        //    else
+        //    {
+        //        if (player.Experience < 2500)
+        //            MessageBox.Show($"Missing experience: { 2500 - player.Experience }");
 
-                if (player.Ascendancy != null)
-                    MessageBox.Show($"Ascendancy already picked!!! ({ player.Ascendancy.AscendancyName })");
+        //        if (player.Ascendancy != null)
+        //            MessageBox.Show($"Ascendancy already picked!!! ({ player.Ascendancy.AscendancyName })");
 
-                return;
-            }
-        }
+        //        return;
+        //    }
+        //}
 
         /// <summary>
         /// Determine if attack is hit or evaded. Draw random number from 0 to 100.

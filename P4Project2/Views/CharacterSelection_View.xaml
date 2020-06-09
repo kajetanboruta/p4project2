@@ -17,8 +17,15 @@
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <DataGrid x:Name="DG_Gladiators">
+            <DataGrid x:Name="DG_Gladiators" AutoGenerateColumns="False">
                 <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Name}"/>
+                    <DataGridTextColumn Binding="{Binding Ascendancy.AscendancyName}"/>
+                    <DataGridTextColumn Binding="{Binding Gender}"/>
+                    <DataGridTextColumn Binding="{Binding CurrentLevel}"/>
+                    <DataGridTextColumn Binding="{Binding CurrentWeapon.Name}"/>
+
+                    <DataGridTextColumn Binding="{Binding PrimaryClass.Name}"/>
                 </DataGrid.Columns>
             </DataGrid>
             <Button Click="Button_Click" Height="25" Width="100"/>

@@ -26,10 +26,10 @@ namespace P4Project2.Views
         public CharacterCreation_View()
         {
             InitializeComponent();
-
             gender_Field.Items.Add("Female");
             gender_Field.Items.Add("Male");
-
+            var a = Context.PrimaryClasses.Select(x => x.Name).ToList();
+            class_Field.ItemsSource = a;
 
         }
 
@@ -48,7 +48,7 @@ namespace P4Project2.Views
                 PrimaryClass = await Context.PrimaryClasses
                                             .Where(c => c.Name == class_Field.Text)
                                             .FirstOrDefaultAsync(),
-                Gender = gender_Field.Text
+                Gender = gender_Field.Text,
             };
 
             try

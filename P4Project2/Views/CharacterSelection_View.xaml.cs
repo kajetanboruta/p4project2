@@ -29,8 +29,8 @@ namespace P4Project2.Views
 
             Gladiator _g = new Gladiator();
             Context _ctx = new Context();
-            
-            _g._Gladiators = _ctx.Gladiators.ToList();
+
+            _g._Gladiators = _ctx.Gladiators.Include(x => x.PrimaryClass).Include(x => x.CurrentWeapon).ToList();
             DG_Gladiators.ItemsSource = _g._Gladiators;
         }
 

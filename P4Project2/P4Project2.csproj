@@ -157,8 +157,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DBContext\Context.cs" />
-    <Compile Include="Models\AscendancyClass.cs" />
-    <Compile Include="Models\Player.cs" />
     <Compile Include="Models\Gladiator.cs" />
     <Compile Include="Models\Level.cs" />
     <Compile Include="Models\Weapon.cs" />
@@ -226,6 +224,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\splashart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\splashCreate.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
