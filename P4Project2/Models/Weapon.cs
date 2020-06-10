@@ -12,14 +12,16 @@ namespace P4Project2.Models
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public int Experience_Required { get; set; }
+        [Required]
+        [ForeignKey("Level_RequiredID")]
+        public Level Level_Required { get; set; }
+        public int? Level_RequiredID { get; set; }
         public int Damage { get; set; }
         public int Accuracy { get; set; }
         [Required]
         [ForeignKey("PrimaryClassID_FK")]
         public PrimaryClass PrimaryClass { get; set; }
         public int? PrimaryClassID_FK { get; set; }
-        public ICollection<Gladiator> Gladiators { get; set; }
 
         public Weapon()
         {

@@ -1,0 +1,20 @@
+﻿<Page x:Class="P4Project2.Views.Fight.FightView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:P4Project2.Views.Fight"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="FightView"
+      Background="Black">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center">
+            <Button Click="Button_Click" Content="ATTACK" Style="{StaticResource menu_Button}"/>
+        </StackPanel>
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Width="300">
+            <Label Foreground="White" Content="hehehehe"/>
+            <ListView x:Name="logger" Height="400"/>
+        </StackPanel>
+    </Grid>
+</Page>

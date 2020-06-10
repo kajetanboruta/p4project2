@@ -27,17 +27,31 @@ namespace P4Project2.Views
         {
             InitializeComponent();
 
-            Gladiator _g = new Gladiator();
-            Context _ctx = new Context();
-
-            _g._Gladiators = _ctx.Gladiators.Include(x => x.PrimaryClass).Include(x => x.CurrentWeapon).ToList();
+            _g._Gladiators = _ctx.Gladiators.Include(x => x.PrimaryClass).Include(x => x.CurrentWeapon).Include(x => x.CurrentLevel).ToList();
             DG_Gladiators.ItemsSource = _g._Gladiators;
         }
+
+        Gladiator _g = new Gladiator();
+        Context _ctx = new Context();
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var window = (ClientView)Application.Current.MainWindow;
             window.MainFrame.Navigate(new Menu(window));
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            DataGridRow _row = DG_Gladiators.SelectedItems[0] as DataGridRow;
+
+            if (DG_Gladiators.SelectedItems.Count > 0)
+            {
+                _g.Player = (DG_Gladiators.SelectedItem as Gladiator);
+
+                var window = (ClientView)Application.Current.MainWindow;
+                window.MainFrame.Navigate(new Fight.DrawEnemyView(_g.Player));
+                
+            }
         }
     }
 }

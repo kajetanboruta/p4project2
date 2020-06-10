@@ -1,0 +1,17 @@
+﻿CREATE TABLE [dbo].[Level] (
+    [LevelNo]       INT IDENTITY (1, 1) NOT NULL,
+    [Health]        INT NOT NULL,
+    [Mana]          INT NOT NULL,
+    [ExperienceReq] INT NOT NULL,
+    CONSTRAINT [PK_Level] PRIMARY KEY CLUSTERED ([LevelNo] ASC)
+);
+
+INSERT INTO [dbo].Level([Health], [Mana], [ExperienceReq]) 
+				  VALUES(100,50,150),
+						(105,50,300),
+						(110,55,500),
+						(110,55,1000),
+						(125,60,1500),
+						(125,60,2500),
+						(130,65,3500),
+						(140,65,5000);

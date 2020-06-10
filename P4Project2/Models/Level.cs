@@ -11,9 +11,8 @@ namespace P4Project2.Models
     {
         [Key]
         public int LevelNo { get; set; }
-        public int Health{ get; set; }
         public int Mana { get; set; }
+        public int Health { get; set; }
         public int ExperienceReq { get; set; }
-        public ICollection<Gladiator> Gladiators { get; set; }
     }
 }

@@ -5,8 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:P4Project2.Views"
       xmlns:m="clr-namespace:P4Project2.Models"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      mc:Ignorable="d"
       Title="CharacterSelection_View">
     <Page.DataContext>
         <m:Gladiator/>
@@ -14,21 +13,28 @@
     <Grid>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="17"/>
+                <ColumnDefinition Width="440"/>
             </Grid.ColumnDefinitions>
-            <DataGrid x:Name="DG_Gladiators" AutoGenerateColumns="False">
+            <DataGrid x:Name="DG_Gladiators" AutoGenerateColumns="False" IsReadOnly="True" EnableColumnVirtualization="False" Background="#303030">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Name}"/>
-                    <DataGridTextColumn Binding="{Binding Ascendancy.AscendancyName}"/>
-                    <DataGridTextColumn Binding="{Binding Gender}"/>
-                    <DataGridTextColumn Binding="{Binding CurrentLevel}"/>
-                    <DataGridTextColumn Binding="{Binding CurrentWeapon.Name}"/>
-
-                    <DataGridTextColumn Binding="{Binding PrimaryClass.Name}"/>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                    <!--<DataGridTextColumn Binding="{Binding Ascendancy.AscendancyName}"/>-->
+                    <DataGridTextColumn Header="Gender" Binding="{Binding Gender}"/>
+                    <DataGridTextColumn Header="Level" Binding="{Binding CurrentLevel.LevelNo}"/>
+                    <DataGridTextColumn Header="Weapon" Binding="{Binding CurrentWeapon.Name}"/>
+                    <DataGridTextColumn Header="Damage" Binding="{Binding CurrentWeapon.Damage}"/>
+                    <DataGridTextColumn Header="Accuracy" Binding="{Binding CurrentWeapon.Accuracy}"/>
+                    <DataGridTextColumn Header="Class" Binding="{Binding PrimaryClass.Name}"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button Click="Button_Click" Height="25" Width="100"/>
+            <StackPanel Grid.Column="2">
+                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                    <Button Style="{StaticResource menu_Button}" Content="CHOOSE" Click="Button_Click_1"/>
+                    <Button Style="{StaticResource menu_Button}" Content="Back" Click="Button_Click"/>
+                </StackPanel>
+            </StackPanel>
         </Grid>
     </Grid>
 </Page>

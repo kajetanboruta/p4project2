@@ -30,20 +30,13 @@ namespace P4Project2.Models
         [ForeignKey("LevelID_FK")]
         public Level CurrentLevel { get; set; }
         public int LevelID_FK { get; set; }
-        [DefaultValue(0)]
         public int Experience { get; set; }
-        [DefaultValue("Prisoner")]
         public string Title { get; set; }
-        [DefaultValue(50)]
-        public int Purse { get; set; }
-        [DefaultValue(0)]
-        public int Wins { get; set; }
-        [DefaultValue(0)]
-        public int Losses { get; set; }
-        [DefaultValue(100)]
         public int Health { get; set; }
-        [DefaultValue(50)]
         public int Mana { get; set; }
+        public int Purse { get; set; }
+        public int Wins { get; set; }
+        public int Losses { get; set; }
         [NotMapped]
         public ICollection<Gladiator> _Gladiators { get; set; }
 
@@ -52,24 +45,11 @@ namespace P4Project2.Models
 
         }
 
-        public static readonly Random rnd = new Random();
+        public Gladiator Player;
+        public Gladiator Enemy;
+        public List<string> _logger = new List<string>();
 
-        /// <summary>
-        /// returns experience gained if fight won, else null.
-        /// </summary>
-        /// <param name="_player"></param>
-        /// <param name="_enemy"></param>
-        public bool FightStatus(Gladiator _player, int _playerHP, Gladiator _enemy, int _enemyHP)
-        {
-            if (_enemyHP <= 0)
-            {
-                Context ctx = new Context();
-                
-                return true;
-            }
 
-            return false;
-        }
 
         /// <summary>
         /// Counts gained experience ( sorry for randomness )
@@ -121,45 +101,8 @@ namespace P4Project2.Models
         //    }
         //}
 
-        /// <summary>
-        /// Determine if attack is hit or evaded. Draw random number from 0 to 100.
-        /// If weapon accuracy chance is 75% then 0-74 = hit,
-        ///                                       75-99 = evaded.
-        /// </summary>
-        /// <param name="_weapon">Wielded weapon of gladiator</param>
-        /// <returns>True = hit, False = evaded</returns>
-        public bool DetermineHit(Weapon _weapon)
-        {
-            var _accuracyCheck = rnd.Next(0, 100);
 
-            if (_weapon.Accuracy < _accuracyCheck)
-                return true;
-            
-            return false;
-        }
 
-        public bool DetermineBlock(Gladiator _gladiator)
-        {
-            return false;
-        }
-
-        /// <summary>
-        /// Function checks if attack is accurate ( if attacker was able to hit victim ).
-        /// If he hit, then victim's hp is changed and returned.
-        /// If not then it returns victim's HP without changes.
-        /// </summary>
-        /// <param name="_attacker">Gladiator who attacks</param>
-        /// <param name="_victim">Gladiator who's attacked</param>
-        /// <returns>health after changes of victim gladiator</returns>
-        public int Attack(Gladiator _attacker, Gladiator _victim)
-        {
-            if (DetermineHit(_attacker.CurrentWeapon))
-            {
-                _victim.Health -= _attacker.CurrentWeapon.Damage;
-                return _victim.Health;
-            }
-
-            return _victim.Health;
-        }
+        
     }
 }

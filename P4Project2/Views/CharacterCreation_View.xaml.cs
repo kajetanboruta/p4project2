@@ -28,9 +28,8 @@ namespace P4Project2.Views
             InitializeComponent();
             gender_Field.Items.Add("Female");
             gender_Field.Items.Add("Male");
-            var a = Context.PrimaryClasses.Select(x => x.Name).ToList();
-            class_Field.ItemsSource = a;
-
+            var gladiatorClasses = Context.PrimaryClasses.Select(x => x.Name).ToList();
+            class_Field.ItemsSource = gladiatorClasses;
         }
 
         readonly Context Context = new Context();
@@ -45,10 +44,17 @@ namespace P4Project2.Views
             Gladiator _gladiator = new Gladiator
             {
                 Name = name_Field.Text,
-                PrimaryClass = await Context.PrimaryClasses
-                                            .Where(c => c.Name == class_Field.Text)
-                                            .FirstOrDefaultAsync(),
                 Gender = gender_Field.Text,
+                PrimaryClassID_FK = (class_Field.SelectedIndex + 1),
+                WeaponID = (class_Field.SelectedIndex + 1),
+                LevelID_FK = 1,
+                Experience = 0,
+                Losses = 0,
+                Wins = 0,
+                Mana = 0,
+                Health = 0,
+                Purse = 50,
+                Title = "Prisoner"
             };
 
             try
@@ -70,6 +76,12 @@ namespace P4Project2.Views
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var window = (ClientView)Application.Current.MainWindow;
+            window.MainFrame.Navigate(new Menu(window));
         }
     }
 }
