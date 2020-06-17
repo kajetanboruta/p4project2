@@ -58,15 +58,6 @@ namespace P4Project2.Models
         /// <param name="enemy">enemy gladiator</param>
         /// <param name="exp">experience gained from battle</param>
         /// <returns></returns>
-        public int CountExperienceGained(Gladiator player, Gladiator enemy, int exp)
-        {
-            Context ctx = new Context();
-            player.Experience += exp;
-
-            ctx.Gladiators.Update(player);
-
-            return player.Experience;
-        }
 
         public double PowerCalculation()
         {

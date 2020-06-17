@@ -9,6 +9,7 @@ namespace P4Project2.DBContext
         public DbSet<PrimaryClass> PrimaryClasses { get; set; }
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Weapon> Weapons { get; set; }
+        public DbSet<Level> Levels { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

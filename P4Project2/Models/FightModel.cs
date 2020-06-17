@@ -1,4 +1,6 @@
 ﻿using P4Project2.DBContext;
+using P4Project2.Views;
+using P4Project2.Views.Fight;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +32,16 @@ namespace P4Project2.Models
             {
                 //Context ctx = new Context();
                 Logs.FightLog.Add($"{_attacker.Name} has won!");
+                if (_attacker.Name == Player.Name)
+                {
+                    var window = (ClientView)Application.Current.MainWindow;
+                    window.MainFrame.Navigate(new WinView());
+                }
+                else
+                {
+                    var window = (ClientView)Application.Current.MainWindow;
+                    window.MainFrame.Navigate(new LoseView());
+                }
                 return true;
             }
             return false;
@@ -102,6 +114,43 @@ namespace P4Project2.Models
             }
             Logs.FightLog.Add($"{_victim.Name}'s taken damage!!!");
             return false;
+        }
+
+        public int CountValuesGained(Gladiator winner, Gladiator looser)
+        {
+            var lvlDifference = winner.LevelID_FK - looser.LevelID_FK;
+
+            if (lvlDifference == 0)
+                return 100;
+            else if (lvlDifference > 0 && lvlDifference != 1)
+                return 150;
+            else if (lvlDifference > 0)
+                return 100 * lvlDifference;
+            else
+                return 50;
+        }
+
+        public void CheckLevelUp(Gladiator winner, int expBefore)
+        {
+            Context ctx = new Context();
+            int currentLevel = winner.LevelID_FK;
+            int nextLevel = winner.LevelID_FK + 1;
+            Level lvl = ctx.Levels.Where(x => x.ExperienceReq < winner.Experience).FirstOrDefault();
+            if (winner.LevelID_FK < lvl.LevelNo)
+            {
+
+            }
+        }
+
+        public void FightSummary(Gladiator winner, Gladiator looser)
+        {
+            var value = CountValuesGained(winner, looser);
+            winner.Experience += value;
+            winner.Purse += value / 2;
+            winner.Wins += 1;
+            
+            looser.Losses += 1;
+            looser.Purse -= value / 2;
         }
     }
 }
