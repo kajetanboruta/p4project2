@@ -20,24 +20,24 @@
             </Border>
         </Border>
         <Grid Grid.Column="2">
-            <StackPanel>
+            <StackPanel VerticalAlignment="Top">
                 <Border BorderThickness="1"  Margin="10 30 10 0" BorderBrush="White"/>
                 <TextBlock Margin="0 0 0 0" Foreground="White" FontSize="75" FontFamily="Perpetua Tiling MT" FontWeight="ExtraBold" Text="SACRIFICUM"/>
                 <Border BorderThickness="1" Margin="10 0" BorderBrush="White"/>
                 <WrapPanel HorizontalAlignment="Center">
                     <TextBlock Margin="0 20 0 0" Foreground="White" FontSize="25" FontFamily="Perpetua Tiling MT" FontWeight="ExtraBold">Who are You?</TextBlock>
                 </WrapPanel>
-            </StackPanel>
-            <StackPanel>
                 <Label Width="100" Content="Name:" Foreground="White"/>
                 <TextBox x:Name="name_Field" Width="100"/>
                 <Label Width="100" Content="Gender:" Foreground="White"/>
                 <ComboBox x:Name="gender_Field" Width="100"/>
                 <Label Width="100" Content="Class:" Foreground="White"/>
                 <ComboBox x:Name="class_Field" Width="100"/>
-                <Button Margin="10" Style="{StaticResource menu_Button}" Click="Create_Gladiator" Content="SAVE" HorizontalAlignment="Center"/>
             </StackPanel>
-            <Button Margin="10" Style="{StaticResource menu_Button}" Click="Button_Click" Content="RETURN" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+            <StackPanel VerticalAlignment="Bottom">
+                <Button Margin="10" Style="{StaticResource menu_Button}" Click="Create_Gladiator" Content="SAVE" HorizontalAlignment="Center"/>
+                <Button Margin="10" Style="{StaticResource menu_Button}" Click="Button_Click" Content="BACK TO MENU" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+            </StackPanel>
         </Grid>
     </Grid>
 </Page>

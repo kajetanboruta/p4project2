@@ -5,16 +5,80 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:P4Project2.Views.Fight"
       mc:Ignorable="d" 
+      xmlns:m="clr-namespace:P4Project2.Models"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="FightView"
       Background="Black">
-    <Grid>
+    <Page.DataContext>
+        <m:FightModel/>
+    </Page.DataContext>
+        <Grid>
         <StackPanel HorizontalAlignment="Center">
-            <Button Click="Button_Click" Content="ATTACK" Style="{StaticResource menu_Button}"/>
+            <!--<Button Click="Button_Click" Content="ATTACK" Style="{StaticResource menu_Button}"/>-->
         </StackPanel>
-        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Width="300">
-            <Label Foreground="White" Content="hehehehe"/>
-            <ListView x:Name="logger" Height="400"/>
-        </StackPanel>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="300">
+                <Label Foreground="White" Content="Fight logs:" HorizontalAlignment="Center"/>
+                <ListView x:Name="logger" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
+            </StackPanel>
+            <Grid Grid.Column="0" x:Name="playerStack" Height="250" Width="250">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label Grid.ColumnSpan="2" HorizontalAlignment="Center" x:Name="player_Name"/>
+                <Image Grid.Row="1" Source="/Images/account.png"/>
+                <StackPanel Grid.Column="1" Grid.Row="1">
+                    <WrapPanel>
+                        <Label>HP:</Label>
+                        <TextBlock x:Name="player_Hp" Style="{StaticResource player_fields}"/>
+                    </WrapPanel>
+                    <WrapPanel>
+                        <Label>Mana:</Label>
+                        <TextBlock x:Name="player_Mp" Style="{StaticResource player_fields}"/>
+                    </WrapPanel>
+                </StackPanel>
+                <StackPanel Grid.Row="2" Grid.Column="1">
+                    <Button Style="{StaticResource menu_Button}" Click="Button_Click">Attack</Button>
+                    <Button Style="{StaticResource menu_Button}">Skill</Button>
+                    <!--<Button Style="{StaticResource menu_Button}">Defensive</Button>-->
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Column="2" Height="250" Width="250">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label Grid.ColumnSpan="2" HorizontalAlignment="Center" x:Name="enemy_Name"/>
+                <Image Grid.Row="1" Source="/Images/account.png"/>
+                <StackPanel Grid.Column="1" Grid.Row="1">
+                    <WrapPanel>
+                        <Label>HP:</Label>
+                        <TextBlock x:Name="enemy_Hp" Style="{StaticResource player_fields}"/>
+                    </WrapPanel>
+                    <WrapPanel>
+                        <Label>Mana:</Label>
+                        <TextBlock x:Name="enemy_Mp" Style="{StaticResource player_fields}"/>
+                    </WrapPanel>
+                </StackPanel>
+            </Grid>
+        </Grid>
+
     </Grid>
 </Page>

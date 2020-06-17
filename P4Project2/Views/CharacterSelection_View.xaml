@@ -17,7 +17,7 @@
                 <ColumnDefinition Width="17"/>
                 <ColumnDefinition Width="440"/>
             </Grid.ColumnDefinitions>
-            <DataGrid x:Name="DG_Gladiators" AutoGenerateColumns="False" IsReadOnly="True" EnableColumnVirtualization="False" Background="#303030">
+            <DataGrid x:Name="DG_Gladiators" AutoGenerateColumns="False" IsReadOnly="True" EnableColumnVirtualization="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
                     <!--<DataGridTextColumn Binding="{Binding Ascendancy.AscendancyName}"/>-->
@@ -27,14 +27,31 @@
                     <DataGridTextColumn Header="Damage" Binding="{Binding CurrentWeapon.Damage}"/>
                     <DataGridTextColumn Header="Accuracy" Binding="{Binding CurrentWeapon.Accuracy}"/>
                     <DataGridTextColumn Header="Class" Binding="{Binding PrimaryClass.Name}"/>
+                    <DataGridTextColumn Header="Wins" Binding="{Binding Wins}"/>
+                    <DataGridTextColumn Header="Losses" Binding="{Binding Losses}"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <StackPanel Grid.Column="2">
-                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom">
-                    <Button Style="{StaticResource menu_Button}" Content="CHOOSE" Click="Button_Click_1"/>
-                    <Button Style="{StaticResource menu_Button}" Content="Back" Click="Button_Click"/>
-                </StackPanel>
-            </StackPanel>
+            <Grid Grid.Column="2">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" VerticalAlignment="Top">
+                        <Border BorderThickness="1"  Margin="10 30 10 0" BorderBrush="White"/>
+                        <TextBlock Margin="0 0 0 0" Foreground="White" FontSize="75" FontFamily="Perpetua Tiling MT" FontWeight="ExtraBold" Text="SACRIFICUM"/>
+                        <Border BorderThickness="1" Margin="10 0" BorderBrush="White"/>
+                        <WrapPanel HorizontalAlignment="Center">
+                            <TextBlock Margin="0 20 0 0" Foreground="White" FontSize="25" FontFamily="Perpetua Tiling MT" FontWeight="ExtraBold">Choose your character</TextBlock>
+                        </WrapPanel>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" HorizontalAlignment="Center">
+                        <Button Style="{StaticResource menu_Button}" Content="CHOOSE" Click="Button_Click_1"/>
+                    </StackPanel>
+                        <Button Grid.Row="1" Style="{StaticResource menu_Button}" Content="BACK TO MENU" Click="Button_Click" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+                </Grid>
+
+            </Grid>
         </Grid>
     </Grid>
 </Page>

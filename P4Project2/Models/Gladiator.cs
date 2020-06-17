@@ -29,6 +29,8 @@ namespace P4Project2.Models
         public int? WeaponID { get; set; }
         [ForeignKey("LevelID_FK")]
         public Level CurrentLevel { get; set; }
+        public int? SkillID { get; set; }
+        public Skill CurrentSkill { get; set; }
         public int LevelID_FK { get; set; }
         public int Experience { get; set; }
         public string Title { get; set; }
@@ -49,8 +51,6 @@ namespace P4Project2.Models
         public Gladiator Enemy;
         public List<string> _logger = new List<string>();
 
-
-
         /// <summary>
         /// Counts gained experience ( sorry for randomness )
         /// </summary>
@@ -66,6 +66,18 @@ namespace P4Project2.Models
             ctx.Gladiators.Update(player);
 
             return player.Experience;
+        }
+
+        public double PowerCalculation()
+        {
+            double overalPwr = 0.0;
+
+            double hpPwr = Health / 10.0;
+            double weaponPwr = (CurrentWeapon.Accuracy + 0.0) / (CurrentWeapon.Damage + 0.0);
+            double lvlPwr = LevelID_FK;
+            overalPwr = hpPwr + weaponPwr + lvlPwr;
+
+            return overalPwr;
         }
 
         /// <summary>

@@ -7,8 +7,11 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="DrawEnemyView">
-
     <Grid>
-        <Button Click="Button_Click" Height="50" Width="50"/>
+        <StackPanel>
+            <Label VerticalAlignment="Center" HorizontalAlignment="Center" Content="CHOOSE YOUR OPPONENT"/>
+            <WrapPanel x:Name="chooseFrom" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </StackPanel>
+        <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="Button_Click_1" Style="{StaticResource menu_Button}">BACK</Button>
     </Grid>
 </Page>

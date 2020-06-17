@@ -51,8 +51,8 @@ namespace P4Project2.Views
                 Experience = 0,
                 Losses = 0,
                 Wins = 0,
-                Mana = 0,
-                Health = 0,
+                Mana = 50,
+                Health = 100,
                 Purse = 50,
                 Title = "Prisoner"
             };
@@ -68,7 +68,8 @@ namespace P4Project2.Views
                 {
                     await Context.Gladiators.AddAsync(_gladiator);
                     await Context.SaveChangesAsync();
-                    MessageBox.Show($"New gladiator {_gladiator.Name}, was thrown into the arena pit!");
+                    MessageBox.Show($"New gladiator {_gladiator.Name} was thrown into the arena pit!");
+                    MoveToCharacterSelection();
                         return;
                 }
             }
@@ -82,6 +83,11 @@ namespace P4Project2.Views
         {
             var window = (ClientView)Application.Current.MainWindow;
             window.MainFrame.Navigate(new Menu(window));
+        }
+        private void MoveToCharacterSelection()
+        {
+            var window = (ClientView)Application.Current.MainWindow;
+            window.MainFrame.Navigate(new CharacterSelection_View());
         }
     }
 }

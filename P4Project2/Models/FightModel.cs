@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,17 +22,16 @@ namespace P4Project2.Models
         /// <summary>
         /// returns experience gained if fight won, else null.
         /// </summary>
-        /// <param name="_player"></param>
-        /// <param name="_enemy"></param>
-        public bool FightStatus(Gladiator _player, int _playerHP, Gladiator _enemy, int _enemyHP)
+        /// <param name="_attacker"></param>
+        /// <param name="_victim"></param>
+        public bool FightStatus(Gladiator _attacker, Gladiator _victim)
         {
-            if (_enemyHP <= 0)
+            if (_victim.Health <= 0)
             {
                 //Context ctx = new Context();
-                Logs.FightLog.Add($"{_player.Name} has won!");
+                Logs.FightLog.Add($"{_attacker.Name} has won!");
                 return true;
             }
-
             return false;
         }
 
@@ -42,11 +42,11 @@ namespace P4Project2.Models
         /// </summary>
         /// <param name="_weapon">Wielded weapon of gladiator</param>
         /// <returns>True = hit, False = evaded</returns>
-        public bool DetermineHit(Weapon _weapon)
+        public bool DetermineHit(Gladiator _attacker)
         {
             var _accuracyCheck = rnd.Next(0, 100);
-
-            if (_weapon.Accuracy < _accuracyCheck)
+            Logs.FightLog.Add($"{_attacker.Name} has thrown {_accuracyCheck} to attack!");
+            if (_attacker.CurrentWeapon.Accuracy >= _accuracyCheck)
                 return true;
 
             return false;
@@ -54,6 +54,10 @@ namespace P4Project2.Models
 
         public bool DetermineBlock(Gladiator _gladiator)
         {
+            var _blockCheck = rnd.Next(0, 10);
+            Logs.FightLog.Add($"{_gladiator.Name} has thrown {_blockCheck} to block!");
+            if (1 >= _blockCheck)
+                return true;
 
             return false;
         }
@@ -66,27 +70,27 @@ namespace P4Project2.Models
         /// <param name="_attacker">Gladiator who attacks</param>
         /// <param name="_victim">Gladiator who's attacked</param>
         /// <returns>health after changes of victim gladiator</returns>
-        public void Attack(Gladiator Player, Gladiator _victim)
+        public void Attack(Gladiator _attacker, Gladiator _victim)
         {
-            if (DetermineHit(Player.CurrentWeapon))
+            if (DetermineHit(_attacker))
             {
                 if (DetermineBlock(_victim))
                 {
-                    Logs.FightLog.Add($"{_victim.Name} hit was not determined! ( FALSE )");
-                    Attack(_victim, Player);
+                    Logs.FightLog.Add($"{_victim.Name} has blocked!");
+                    Attack(_victim, _attacker);
                     return;
                 }
-                Logs.FightLog.Add($"{Player.Name} hit was determined! ( TRUE )");
-                _victim.Health -= Player.CurrentWeapon.Damage;
+                Logs.FightLog.Add($"{_attacker.Name} hit was determined!");
+                _victim.Health -= _attacker.CurrentWeapon.Damage;
                 Logs.FightLog.Add($"{_victim.Name}'s health dropped to {_victim.Health}");
-                if (FightStatus(Player, Player.Health, Enemy, Enemy.Health)) 
+                if (FightStatus(_attacker, _victim))
                 {
-                    MessageBox.Show("Wygrana");
+                    Logs.FightLog.Add($"{_attacker} won!!!");
                 }
                 return;
             }
 
-            Logs.FightLog.Add($"{Player.Name} hit was not determined! ( FALSE )");
+            Logs.FightLog.Add($"{_attacker.Name} hit was not determined!");
         }
 
         public bool Block(Gladiator _attacker, Gladiator _victim)

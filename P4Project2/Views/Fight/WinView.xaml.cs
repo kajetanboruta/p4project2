@@ -10,26 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using P4Project2.DBContext;
-using P4Project2.Models;
 
-namespace P4Project2.Views
+namespace P4Project2.Views.Fight
 {
     /// <summary>
-    /// Logika interakcji dla klasy ClientView.xaml
+    /// Logika interakcji dla klasy WinView.xaml
     /// </summary>
-    public partial class ClientView : Window
+    public partial class WinView : Page
     {
-        public ClientView()
+        public WinView()
         {
             InitializeComponent();
-
-            MainFrame.Navigate(new Menu(this));
-
-            Context context = new Context();
-            context.Database.EnsureCreated();
-            context.SaveChanges();
         }
     }
 }

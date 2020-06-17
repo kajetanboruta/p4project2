@@ -29,12 +29,27 @@ namespace P4Project2.Views.Fight
         FightModel fight = new FightModel();
         Logger _logger = new Logger();
 
-        public FightView(Gladiator player/*, Gladiator Enemy*/)
+        public FightView(Gladiator Player, Gladiator Enemy)
         {
             InitializeComponent();
+            //fight.Enemy = ctx.Gladiators.Where(x => x.Name == "Sorka").FirstOrDefault();
+            fight.Player = Player;
+            fight.Enemy = Enemy;
+            LoadGladiators();
+
+        }
+
+        private void LoadGladiators()
+        {
             DBContext.Context ctx = new DBContext.Context();
-            fight.Enemy = ctx.Gladiators.Where(x => x.Name == "Sorka").FirstOrDefault();
-            fight.Player = player;
+
+
+            enemy_Name.Content = $"{fight.Enemy.Name} ({fight.Enemy.PrimaryClass.Name})";
+            enemy_Hp.Text = fight.Enemy.Health.ToString();
+            enemy_Mp.Text = fight.Enemy.Mana.ToString();
+            player_Name.Content = $"{fight.Player.Name} ({fight.Player.PrimaryClass.Name})";
+            player_Hp.Text = fight.Player.Health.ToString();
+            player_Mp.Text = fight.Player.Mana.ToString();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -46,6 +61,8 @@ namespace P4Project2.Views.Fight
                 logger.Items.Add(log);
             }
             fight.Logs.FightLog.Clear();
+
+            LoadGladiators();
         }
     }
 }
