@@ -38,8 +38,8 @@ namespace P4Project2.Views.Fight
 
         public void Func()
         {
-            var a = ctx.Gladiators.Include(x => x.CurrentWeapon).Include(x => x.CurrentLevel).Include(x => x.PrimaryClass);
-            _tempGladiators = a.Where(x => x.LevelID_FK <= (player.LevelID_FK + 1) && x.LevelID_FK >= (player.LevelID_FK - 1) && x.ID != player.ID).ToList();
+            List<Gladiator> enemyGladiators = ctx.Gladiators.Include(x => x.CurrentWeapon).Include(x => x.CurrentLevel).Include(x => x.PrimaryClass).ToList();
+            _tempGladiators = enemyGladiators.Where(x => x.LevelID_FK <= (player.LevelID_FK + 1) && x.LevelID_FK >= (player.LevelID_FK - 1) && x.ID != player.ID).ToList();
             //List<Gladiator> a = drawnEnemies.OrderBy(x => rnd.Next()).Take(3).ToList();
             Style style = this.TryFindResource("menu_Button") as Style;
 
@@ -74,7 +74,6 @@ namespace P4Project2.Views.Fight
             enemy = _tempGladiators.Where(x => x.ID == b).FirstOrDefault();
             var window = (ClientView)Application.Current.MainWindow;
             window.MainFrame.Navigate(new FightView(player,enemy));
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

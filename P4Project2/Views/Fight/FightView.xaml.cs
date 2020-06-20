@@ -32,17 +32,14 @@ namespace P4Project2.Views.Fight
         public FightView(Gladiator Player, Gladiator Enemy)
         {
             InitializeComponent();
-            //fight.Enemy = ctx.Gladiators.Where(x => x.Name == "Sorka").FirstOrDefault();
             fight.Player = Player;
             fight.Enemy = Enemy;
             LoadGladiators();
-
         }
 
         private void LoadGladiators()
         {
             DBContext.Context ctx = new DBContext.Context();
-
 
             enemy_Name.Content = $"{fight.Enemy.Name} ({fight.Enemy.PrimaryClass.Name})";
             enemy_Hp.Text = fight.Enemy.Health.ToString();
@@ -55,7 +52,7 @@ namespace P4Project2.Views.Fight
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             fight.Attack(fight.Player, fight.Enemy);
-
+            
             foreach (var log in fight.Logs.FightLog)
             {
                 logger.Items.Add(log);

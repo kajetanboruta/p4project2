@@ -25,12 +25,12 @@ namespace P4Project2.Models
         public virtual PrimaryClass PrimaryClass { get; set; }
         public int PrimaryClassID_FK { get; set; }
         [ForeignKey("WeaponID")]
-        public Weapon CurrentWeapon { get; set; }
+        public virtual Weapon CurrentWeapon { get; set; }
         public int? WeaponID { get; set; }
         [ForeignKey("LevelID_FK")]
-        public Level CurrentLevel { get; set; }
+        public virtual Level CurrentLevel { get; set; }
         public int? SkillID { get; set; }
-        public Skill CurrentSkill { get; set; }
+        public virtual Skill CurrentSkill { get; set; }
         public int LevelID_FK { get; set; }
         public int Experience { get; set; }
         public string Title { get; set; }

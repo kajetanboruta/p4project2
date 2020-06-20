@@ -1,4 +1,5 @@
-﻿using P4Project2.DBContext;
+﻿using Microsoft.EntityFrameworkCore;
+using P4Project2.DBContext;
 using P4Project2.Views;
 using P4Project2.Views.Fight;
 using System;
@@ -31,6 +32,7 @@ namespace P4Project2.Models
             if (_victim.Health <= 0)
             {
                 //Context ctx = new Context();
+                FightSummary(_attacker,_victim);
                 Logs.FightLog.Add($"{_attacker.Name} has won!");
                 if (_attacker.Name == Player.Name)
                 {
@@ -101,7 +103,6 @@ namespace P4Project2.Models
                 }
                 return;
             }
-
             Logs.FightLog.Add($"{_attacker.Name} hit was not determined!");
         }
 
@@ -130,27 +131,34 @@ namespace P4Project2.Models
                 return 50;
         }
 
-        public void CheckLevelUp(Gladiator winner, int expBefore)
+        public async void CheckLevelUp(Gladiator winner)
         {
             Context ctx = new Context();
-            int currentLevel = winner.LevelID_FK;
-            int nextLevel = winner.LevelID_FK + 1;
-            Level lvl = ctx.Levels.Where(x => x.ExperienceReq < winner.Experience).FirstOrDefault();
-            if (winner.LevelID_FK < lvl.LevelNo)
+            
+            var nextLevel = ctx.Levels.Where(x => x.LevelNo > winner.LevelID_FK).FirstOrDefault();
+            if (winner.Experience >= nextLevel.ExperienceReq)
             {
-
+                winner.Health = nextLevel.Health;
+                winner.Mana = nextLevel.Mana;
+                winner.LevelID_FK = nextLevel.LevelNo;
+                winner.CurrentLevel = await ctx.Levels.Where(x => x.LevelNo == winner.LevelID_FK).FirstOrDefaultAsync();
+                MessageBox.Show($"{winner.Name} just leveled up!");
             }
         }
 
         public void FightSummary(Gladiator winner, Gladiator looser)
         {
+            Context ctx = new Context();
             var value = CountValuesGained(winner, looser);
             winner.Experience += value;
             winner.Purse += value / 2;
             winner.Wins += 1;
-            
+            CheckLevelUp(winner);
             looser.Losses += 1;
             looser.Purse -= value / 2;
+            ctx.Gladiators.UpdateRange(winner, looser);
+            ctx.SaveChanges();
+
         }
     }
 }

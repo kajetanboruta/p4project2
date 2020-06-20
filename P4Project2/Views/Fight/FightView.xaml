@@ -16,7 +16,6 @@
         <StackPanel HorizontalAlignment="Center">
             <!--<Button Click="Button_Click" Content="ATTACK" Style="{StaticResource menu_Button}"/>-->
         </StackPanel>
-
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -79,6 +78,5 @@
                 </StackPanel>
             </Grid>
         </Grid>
-
     </Grid>
 </Page>
