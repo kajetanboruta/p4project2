@@ -2,8 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:P4Project2"
-             StartupUri="Views/ClientView.xaml">
-
+             >
+    <!--StartupUri="Views/ClientView.xaml"-->
     <Application.Resources>
         <Style TargetType="DataGrid">
             <Setter Property="Background" Value="Transparent"/>

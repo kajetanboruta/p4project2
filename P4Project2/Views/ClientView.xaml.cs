@@ -21,15 +21,21 @@ namespace P4Project2.Views
     /// </summary>
     public partial class ClientView : Window
     {
+        private Context _context;
         public ClientView()
         {
             InitializeComponent();
 
             MainFrame.Navigate(new Menu(this));
+            
 
-            Context context = new Context();
-            context.Database.EnsureCreated();
-            context.SaveChanges();
+        }
+
+        public ClientView(Context a) : this()
+        {
+            _context = a;
+            _context.Database.EnsureCreated();
+            _context.SaveChanges();
         }
     }
 }

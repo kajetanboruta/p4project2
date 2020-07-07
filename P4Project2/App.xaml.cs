@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Autofac;
+using P4Project2.DBContext;
+using P4Project2.Models;
+using P4Project2.Views;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +17,21 @@ namespace P4Project2
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            ContainerBuilder builder = new ContainerBuilder();
+            builder.RegisterType<Logger>().AsSelf();
+            builder.RegisterType<ClientView>().AsSelf();
+            builder.RegisterType<Context>().AsSelf();
+            builder.RegisterType<Menu>().AsSelf();
+
+            var container = builder.Build();
+
+            using(var scope = container.BeginLifetimeScope()){
+                var window = scope.Resolve<ClientView>();
+                window.Show();
+            };
+        }
     }
 }
