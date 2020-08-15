@@ -146,19 +146,33 @@ namespace P4Project2.Models
             }
         }
 
-        public void FightSummary(Gladiator winner, Gladiator looser)
+        public void SummaryOfGladiator(Gladiator gladiator, bool state, int value)
         {
             Context ctx = new Context();
-            var value = CountValuesGained(winner, looser);
-            winner.Experience += value;
-            winner.Purse += value / 2;
-            winner.Wins += 1;
-            CheckLevelUp(winner);
-            looser.Losses += 1;
-            looser.Purse -= value / 2;
-            ctx.Gladiators.UpdateRange(winner, looser);
+            gladiator = ctx.Gladiators.Where(x => x.ID == gladiator.ID).FirstOrDefault();
+            
+            if (state)
+            {
+                gladiator.Experience += value;
+                gladiator.Purse += value / 2;
+                gladiator.Wins += 1;
+                CheckLevelUp(gladiator);
+            }
+            else
+            {
+                gladiator.Losses += 1;
+                gladiator.Purse -= value / 2;
+            }
+            ctx.Gladiators.Update(gladiator);
             ctx.SaveChanges();
+        }
 
+        public void FightSummary(Gladiator winner, Gladiator looser)
+        {
+            var value = CountValuesGained(winner, looser);
+
+            SummaryOfGladiator(winner, true, value);
+            SummaryOfGladiator(looser, false, value);
         }
     }
 }

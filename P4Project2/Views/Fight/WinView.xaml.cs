@@ -24,5 +24,11 @@ namespace P4Project2.Views.Fight
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var window = (ClientView)Application.Current.MainWindow;
+            window.MainFrame.Navigate(new Menu());
+        }
     }
 }

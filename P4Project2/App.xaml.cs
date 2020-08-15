@@ -25,6 +25,7 @@ namespace P4Project2
             builder.RegisterType<ClientView>().AsSelf();
             builder.RegisterType<Context>().AsSelf();
             builder.RegisterType<Menu>().AsSelf();
+            builder.RegisterType<FightModel>().AsSelf();
 
             var container = builder.Build();
 

@@ -10,5 +10,7 @@
 
     <Grid>
         <Label HorizontalAlignment="Center" VerticalAlignment="Center">YOU LOSE</Label>
+
+        <Button Height="50" Style="{StaticResource menu_Button}" Content="BACK TO MENU" Click="Button_Click" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 100 0 0"/>
     </Grid>
 </Page>
